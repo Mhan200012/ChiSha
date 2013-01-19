@@ -11,15 +11,15 @@ import android.os.Vibrator;
 import android.app.Activity;
 import android.app.Service;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class ChiShaActivity extends Activity implements SensorEventListener {
-	Button clear;
+	TextView text;
     //定义sensor管理器
 	private SensorManager mSensorManager;
 	//震动
 	private Vibrator vibrator;
+	int last;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +30,9 @@ public class ChiShaActivity extends Activity implements SensorEventListener {
         //震动
         vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
         
-        clear = (Button) findViewById(R.id.btn);
+        text = (TextView) findViewById(R.id.textview);
         
-        clear.setOnClickListener(new Button.OnClickListener(){
-        	
-	        @Override
-	        public void onClick(View arg0) {
-	        	// TODO Auto-generated method stub
-		        // 点击button后，给button按钮设置了text
-	        	clear.setText("现在给button的text赋值喽~");
-	        }
-        });
+        text.setText("摇一摇~~");
     }
 
     @Override
@@ -57,8 +49,8 @@ public class ChiShaActivity extends Activity implements SensorEventListener {
         mSensorManager.registerListener(this, 
         		mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), 
         		SensorManager.SENSOR_DELAY_NORMAL);
-        //还有SENSOR_DELAY_UI、SENSOR_DELAY_FASTEST、SENSOR_DELAY_GAME等，
-        //根据不同应用，需要的反应速率不同，具体根据实际情况设定
+        //还有SENSOR_DELAY_UI、SENSOR_DELAY_FASTEST、SENSOR_DELAY_GAME等，根据不同应用，需要的反应速率不同，具体根据实际情况设定
+        text.setText("摇一摇~~");
     }
     @Override
     protected void onStop(){
@@ -96,7 +88,7 @@ public class ChiShaActivity extends Activity implements SensorEventListener {
 	       if((Math.abs(values[0])>14||Math.abs(values[1])>14||Math.abs(values[2])>14)){
 	       
 	    	   //摇动手机后，设置button上显示的字为空
-	    	   clear.setText(null);
+	    	   text.setText(getCanteen());
 	        
 	    	   //摇动手机后，再伴随震动提示~~
 	    	   vibrator.vibrate(500);
@@ -104,4 +96,38 @@ public class ChiShaActivity extends Activity implements SensorEventListener {
 	       }
         }
 	}
+    
+    public String getCanteen(){
+    	int r;
+    	
+    	do {
+    		r =  (int)(Math.random() * 12 + 1);
+    	} while(r==last);
+    	last = r;
+    	
+    	switch(r) {
+    	case 1: 
+    		return "学一";
+    	case 2: 
+    		return "农园";
+    	case 3: 
+    		return "燕南";
+    	case 4: 
+    		return "艺园";
+    	case 5: 
+    		return "康西";
+    	case 6: 
+    		return "面食部";
+    	case 7: 
+    		return "松林";
+    	case 8: 
+    		return "康博斯饺子";
+    	case 9: 
+    		return "家园";
+    	case 10: 
+    		return "康中";
+    	default:
+    		return "小白房吧";
+    	}
+    }
 }

@@ -4,21 +4,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <!--  <TextView
+    <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/hello_world" />-->
+        android:text="@string/hello_world"
+        android:textSize="30sp" />
     
-    <Button 
+    <!-- <Button 
         android:text="@string/clear_str"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/btn"
-        />
+        /> -->
 
 
 </RelativeLayout>
