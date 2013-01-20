@@ -2,8 +2,20 @@
 <resources>
 
     <string name="app_name">吃啥</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="clear_str">Clear</string>
-
+    <string name="menu_settings">设定</string>
+    <string name="welcome">吃前摇一摇</string>
+    <string-array name="canteen">
+        <item>学一</item>
+        <item>农园</item>
+        <item>燕南</item>
+        <item>艺园</item>
+        <item>康西</item>
+        <item>面食部</item>
+        <item>松林</item>
+        <item>康博斯饺子</item>
+        <item>家园</item>
+        <item>康中</item>
+        <item>小白房吧</item>
+    </string-array>
+    
 </resources>
